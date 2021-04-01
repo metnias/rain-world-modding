@@ -17,7 +17,7 @@ When adding to or editing the content of this repository, please follow the list
 4. Find an appropriate category for your article, or if one does not exist create a new one.
     - To create a new category, add the name of the category to `pages/pages.json` as a new key. Add a list as the corresponding value. Create a new folder in the `pages` folder and make its name the name of the category but all lowercase and each space with "`-`" (a hyphen).
 
-5. Save your article's .md file to the category's folder, avoiding using spaces in the file name. Export an HTML (without styling) of this article (this is an option in Typora under File>Export) and place the .html file in the same place with the same name as the .md file.
+5. Save your article's .md file to the category's folder, avoiding using spaces in the file name. You should no longer export HTML - GitHub will handle this for you :D
 
 6. Open `pages/pages.json` in a text editor and add the exact name of your .md file (minus the md file extension) to the list corresponding to the chosen category. Here is an example extract from the json file - note the usage of double quotes and commas:
 
@@ -29,7 +29,7 @@ When adding to or editing the content of this repository, please follow the list
 
 8. Using GitHub, make a pull request from your fork with edits to the origin/main. Someone can then review your pull request and merge it with origin, edit, or request edits. Pull requests can then be merged by a user with write permissions for the origin repository.
 
-After some automated actions have taken place, everything on origin/main is then deployed to [the website](https://rain-world-modding.github.io/rain-world-modding/index.html) . 
+An automated script will add the required CSS and JS resource links to the article, and then everything on origin/main will be deployed to [the website](https://rain-world-modding.github.io/rain-world-modding/index.html) . 
 
 ---
 ### Article styling guide (markdown)
@@ -41,7 +41,7 @@ You can also take a peak at the source for other markdown articles in this repos
 
 - **If** a brief page summary is included after the h1, use `---` on a new line to add a divider before the main body of the article (but after the summary).
 
-- Feel free to use images and other media where they're helpful! You can place assets in the `/assets` folder - try to use relative paths when referencing assets in the repo. If using many assets on your page, please add a folder for this page inside `/assets` and place your assets there instead.
+- Feel free to use images and other media where they're helpful! You can place assets in the `/assets` folder - try to use relative paths when referencing assets in the repo - these should start with `../../assets/` with an additional `../` at the start for each extra category of depth the article has (0 extra if the article is in `pages/some-category`. If using many assets on your page, please add a folder for this page inside `/assets` and place your assets there instead.
 
 - Use headers of h2 and h3 where you think they're helpful for understanding the different sections of the article.
 

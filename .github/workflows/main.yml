@@ -1,37 +1,24 @@
-# Custom workflow for adding appropriate css links for new article html pages
+# Custom workflow for the Rain World modding wiki update project
 
-name: css-check
+name: wiki-workflow
 
-on: [push, pull_request, workflow_dispatch]
+on: [push, workflow_dispatch]
 
 jobs:
   add-article-css:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        
-      # check html files in pages dir for article.css reference. if css ref missing, it will be added
-      - name: check for css
-        working-directory: .
+
+      - name: generate html pages
+        working-directory: ./.github/workflows
         run: |
-          PAGESPATH=./pages/*/
-          for dir in $PAGESPATH
-          do
-            for f in $dir*.html
-            do
-              echo $dir $f
-              lookfor='article.css'
-              match="<head>"
-              insert="<link rel='stylesheet' href='../../css/main.css'/>\n<link rel='stylesheet' href='../../css/article.css'/>\n<script src='../../scripts/extras.js'></script>"
-              if [[ -z "$(grep $lookfor $f)" ]]
-              then
-                sed -i "/$match/a $insert" $f
-              fi
-            done
-          done
+          python3 -m pip install mistune==2.0.0a6
+          python3 -m pip install beautifulsoup4
+          python3 ./html_converter.py
           
       - name: commit changes
         uses: EndBug/add-and-commit@v6
         with:
-          message: 'Automatically added CSS to article (gh action)'
+          message: 'Automatically generated HTML (GitHub Action)'
           add: pages

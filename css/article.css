@@ -1,6 +1,8 @@
 
 :root {
-    --article-subheading-text: #a8a8a0;
+    --article-subheading-text: #babab0;
+    --article-content-bg: #3d393a4a;
+    --article-details-bg: #2824294a;
     
     --code-font: Monospace;
     --code-bg: #353230;
@@ -12,36 +14,85 @@ div.nav {
     position: static;
 }
 
-h1 {
-    border-bottom: solid 1px var(--article-subheading-text);
-    margin: 2% 5%;
-    padding-bottom: 1.5%;
-    width: 90%;
+div.article-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 2% 10% 2% 10%;
+    width: 80%;
 }
+div.article-content {
+    background-color: var(--article-content-bg);
+    width: 75%;
+    padding-bottom: 2%;
+}
+div.article-details {
+    background-color: var(--article-details-bg);
+    width: 24.5%;
+    height: 100%;
+    margin-left: 0.5%;
+}
+
+h1 {
+    padding: 2% 1% 1% 1%;
+}
+
+/* page detail bar */
+.article-details h3 {
+    margin: 0;
+    padding: 5% 0 3% 7%;
+    font-size: 1em;
+}
+.contributors, .last-updated {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0 0 3% 7%;
+    width: 20%;
+}
+.last-updated {
+    font-size: 0.8em;
+}
+/* --- */
+
 
 h2, h3, h4, h5, h6 {
-    padding: 0.75% 6% 0 6%;
-    color: var(--article-subheading-text)
+    padding: 0.75% 15% 0 10%;
+    color: var(--article-subheading-text);
 }
-
 hr {
-    width: 90%;
+    width: 85%;
+    color: var(--article-subheading-text);
+    margin-bottom: 1.5%; margin-top: 1.2%;
 }
-
 p {
-    padding: 0 7% 0.5% 7%;
+    padding: 0.5% 16% 0.5% 11%;
 }
 
-li:not(div.nav li):not(footer li) {
-    margin: 0 7% 0 7%;
+
+ul, ol {
+    padding: 0.4% 15%;
 }
-li p {
-    padding: 0;
+ol ol, ul ul, ol ul, ul ol {
+    padding-left: 3%;
+}
+li:not(.nav li, footer li) {
+    padding: 0.5% 0;
 }
 
 img {
     max-width: 65%;
-    padding: 0 7%;
+    margin: 0 7%;
+    transition: transform 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+img:hover:not(.article-details img) {
+    transform: scale(1.5);
+    -wekbit-transform: scale(1.5);
+}
+
+iframe {
+    max-width: 65%;
+    padding: 0.6% 18%;
 }
 
 code {
@@ -52,7 +103,7 @@ code {
     padding: 0 0.3em;
 }
 pre {
-    margin: 1% 10% 1% 8%;
+    margin: 1% 12% 1% 12%;
 }
 pre code {
     padding: 2em;
@@ -62,4 +113,16 @@ pre code {
     justify-content: space-between;
     max-width: 100%;
     overflow-x: auto;
+}
+
+table, th, td {
+    margin: 1% 18%;
+    border-collapse: collapse;
+    border: solid var(--article-subheading-text) 1px;
+}
+th {
+    border-bottom: solid var(--article-subheading-text) 3px;
+}
+th, td {
+    padding: 5px 10px;
 }
